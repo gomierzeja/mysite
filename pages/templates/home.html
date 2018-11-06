@@ -1,0 +1,54 @@
+
+
+{% extends 'base.html' %}
+
+{% block title %}Welcome on our page!{% endblock %}
+{% block content %}
+
+    <br><br/>
+
+    Home page
+
+    <div>
+            <table>
+            <tr>
+                <th>Put the sequence</th>
+                <th>Put the grammar</th>
+            </tr>
+            <tr>
+                <th><input id="sequence" type="text" style="height: 100px" size="60" value="Put the sequence..."></th>
+                <th><input type="text" style="height: 100px" size="60" value="Put the grammar..."></th>
+            </tr>
+            <tr>
+                <th>
+                    <a href="image/" onclick="this.target='_BLANK'"><button id="button1" type="button">Load</button></a>
+                    <button type="button" onclick="Confirm()">Confirm</button>
+                </th>
+                <th>
+                    <button type="button">Load</button>
+                    <button type="button">Confirm</button>
+                </th>
+            </tr>
+        </table>
+        </div>
+
+        <div>
+            <h2>PARSE</h2>
+            <form action="/action_page.php" method="get">
+                <input type="checkbox" value="opt1"> Option1<br>
+                <input type="checkbox" value="opt2"> Option2<br>
+                <input type="checkbox" value="opt3"> Option3<br>
+                <input type="submit" value="Submit">
+              </form>
+
+        </div>
+
+
+    <script type="text/javascript">
+
+
+    </script>
+{% endblock %}
+
+
+
