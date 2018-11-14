@@ -19,6 +19,12 @@ def about(request):
 def image(request):
     return render(request, "image.html", {})
 
+def contact(request):
+    return render(request, "contact.html", {})
+
+def profile(request):
+    return render(request, "profile.html", {})
+
 
 
 

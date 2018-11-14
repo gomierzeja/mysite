@@ -7,44 +7,99 @@
 
     <br><br/>
 
-    Home page
+
+    <div align="center">
+        <img  src="BIOtools.jpg">
+    </div>
+
 
     <div>
+        <h2>Put the sequences</h2>
+    </div>
+    <div align="center" style="margin-top: 20px; margin-bottom: 50px" >
             <table>
-            <tr>
-                <th>Put the sequence</th>
-                <th>Put the grammar</th>
-            </tr>
+                <tr>
+                    <th style="height: 20px"></th>
+                </tr>
             <tr>
                 <th><input id="sequence" type="text" style="height: 100px" size="60" value="Put the sequence..."></th>
                 <th><input type="text" style="height: 100px" size="60" value="Put the grammar..."></th>
             </tr>
+
+                <tr><th style="height: 20px"></th></tr>
             <tr>
                 <th>
-                    <a href="image/" onclick="this.target='_BLANK'"><button id="button1" type="button">Load</button></a>
+                    <button  id="button1" type="button">Load</button>
                     <button type="button" onclick="Confirm()">Confirm</button>
                 </th>
+
                 <th>
-                    <button type="button">Load</button>
+                    <button  type="button">Load</button>
                     <button type="button">Confirm</button>
                 </th>
             </tr>
         </table>
         </div>
 
-        <div>
-            <h2>PARSE</h2>
+        <div style="margin-top: 20px; margin-bottom: 50px">
+            <h2>Choose files</h2>
+            <button type="button" onclick="ChooseFile()">Choose a file</button>
+
+        </div>
+
+        <div style="margin-top: 20px; margin-bottom: 50px">
+            <h2>Parse</h2>
             <form action="/action_page.php" method="get">
                 <input type="checkbox" value="opt1"> Option1<br>
                 <input type="checkbox" value="opt2"> Option2<br>
                 <input type="checkbox" value="opt3"> Option3<br>
-                <input type="submit" value="Submit">
-              </form>
 
+            </form>
+        </div>
+
+        <div style="margin-top: 20px; margin-bottom: 50px">
+            <area id="tree" style="display:none"></area>
+            <button type="button" value="Submit" onclick="Tree()">Submit</button>
+            <button type="button" value="Hide" onclick="HideTree()">Hide</button>
+            <button type="button" value="Save a file" >Choose a file</button>
         </div>
 
 
+    <script src="/static/viz.js"></script>
     <script type="text/javascript">
+
+        //const Http = new XMLHttpRequest(); //url pod ktorym sa dane
+        //const url='http://localhost:5000/Data';
+
+        //Http.open("GET", url);
+        //Http.send();
+
+       // Http.onreadystatechange=(e)=>{
+        //viz.renderSVGElement(Http.responseText)
+       // .then(function(element) {
+           // document.getElementById("Gosia").appendChild(element);
+            //document.getElementById("Gosia").style="display:block"
+       // });
+       // };
+
+   function Tree() {
+        const workerURL = '/static/full.render.js';
+        let viz = new Viz({ workerURL });
+
+        viz.renderSVGElement('digraph { a -> b } ')
+        .then(function(element) {
+            document.getElementById("tree").appendChild(element);
+            document.getElementById("tree").style="display:block"
+        });
+   }
+
+   function HideTree(){
+       document.getElementById("tree").style="display:none"
+       var myNode = document.getElementById("tree");
+    while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+    }
+   }
 
 
     </script>
